@@ -81,5 +81,25 @@ pipeline {
             }
         }
 
+        stage() {
+            step {
+            script {
+                nexusArtifactUploader artifacts: [
+                    [
+                        artifactId: 'vprofile', 
+                        classifier: '', 
+                        file: 'target/vprofile-v2.war', 
+                        type: 'war'
+                    ]
+                ], 
+                credentialsId: 'nexus-creds', 
+                groupId: 'com.visualpathit', 
+                nexusUrl: '172.31.40.40:8081', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: 'new-repo-release', 
+                version: 'v2.3'
+            }
+        }
     }
 }

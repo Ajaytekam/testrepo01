@@ -81,7 +81,7 @@ pipeline {
             }
         }
 
-        stage() {
+        stage('Nexus Artifact uploader') {
             steps {
                 script {
                     nexusArtifactUploader artifacts: [

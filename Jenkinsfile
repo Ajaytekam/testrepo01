@@ -115,7 +115,7 @@ pipeline {
                         ]
                     ], 
                     credentialsId: 'nexus-creds', 
-                    groupId: '${groupId}', 
+                    groupId: "${groupId}",
                     nexusUrl: '172.31.40.40:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 

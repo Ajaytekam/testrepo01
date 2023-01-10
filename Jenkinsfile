@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url:https://github.com/Ajaytekam/testrepo01.git'
+                git branch: 'main', url: 'https://github.com/Ajaytekam/testrepo01.git'
             }
         }
 

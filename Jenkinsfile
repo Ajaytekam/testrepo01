@@ -1,3 +1,8 @@
+def COLOR_MAP = [
+  'SUCCESS': 'good',
+  'FAILURE': 'danger'
+]
+
 pipeline {
     agent any
 
@@ -9,7 +14,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Ajaytekam/testrepo01.git'
+                git branch: 'main', url:https://github.com/Ajaytekam/testrepo01.git'
             }
         }
 
@@ -124,5 +129,14 @@ pipeline {
                 }
             }
         } 
+    }
+
+
+    post {
+        always {
+            echo 'Slack Notification.'
+            slackSend channel: '#test01',
+            color: COLOR_MAP[currentBuild.currentResult],
+            message: "*${currentBuild.currentResult}* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"                          }
     }
 }

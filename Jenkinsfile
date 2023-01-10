@@ -82,7 +82,7 @@ pipeline {
         }
 
         stage() {
-            step {
+            steps {
                 script {
                     nexusArtifactUploader artifacts: [
                         [
@@ -101,6 +101,6 @@ pipeline {
                     version: 'v2.3'
                 }
             }
-        }
+        } 
     }
 }

@@ -84,21 +84,43 @@ pipeline {
         stage('Nexus Artifact uploader') {
             steps {
                 script {
+
+                    /* nexusArtifactUploader artifacts: [ */
+                    /*     [ */
+                    /*       artifactId: 'vprofile', */ 
+                    /*       classifier: '', */ 
+                    /*       file: "target/vprofile-v2.war", */ 
+                    /*       type: 'war' */
+                    /*     ] */
+                    /*   ], */ 
+                    /*   credentialsId: 'nexus-creds', */ 
+                    /*   groupId: 'com.visualpathit', */ 
+                    /*   nexusUrl: '172.31.40.40:8081', */ 
+                    /*   nexusVersion: 'nexus3', */ 
+                    /*   protocol: 'http', */ 
+                    /*   repository: 'new-repo-release', */ 
+                    /*   version: "v2" */
+
+                    def version = sh script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout', returnStdout: true
+                    def artifactId = sh script: 'mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout', returnStdout: true
+                    def packaging = sh script: 'mvn help:evaluate -Dexpression=project.packaging -q -DforceStdout', returnStdout: true
+                    def groupId = sh script: 'mvn help:evaluate -Dexpression=project.groupId -q -DforceStdout', returnStdout: true
+
                     nexusArtifactUploader artifacts: [
                         [
-                            artifactId: 'vprofile', 
+                            artifactId: "${artifactId}", 
                             classifier: '', 
-                            file: 'target/vprofile-v2.3.war', 
-                            type: 'war'
+                            file: "target/${artifactId}-${version}.war",
+                            type: "${packaging}"
                         ]
                     ], 
                     credentialsId: 'nexus-creds', 
-                    groupId: 'com.visualpathit', 
+                    groupId: '${groupId}', 
                     nexusUrl: '172.31.40.40:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
                     repository: 'new-repo-release', 
-                    version: 'v2.3'
+                    version: "${version}"
                 }
             }
         } 

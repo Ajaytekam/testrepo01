@@ -94,7 +94,7 @@ pipeline {
                     //      type: 'war'
                     //    ]
                     //  ], 
-                    //  credentialsId: 'nexus-auth2', 
+                    //  credentialsId: 'nexus-creds', 
                     //  groupId: 'com.visualpathit', 
                     //  nexusUrl: '172.31.40.40:8081', 
                     //  nexusVersion: 'nexus3', 
@@ -114,7 +114,7 @@ pipeline {
                             type: "${packaging}"
                         ]
                     ], 
-                    credentialsId: 'nexus-auth2', 
+                    credentialsId: 'nexus-creds', 
                     groupId: 'com.visualpathit', 
                     nexusUrl: '172.31.40.40:8081', 
                     nexusVersion: 'nexus3', 

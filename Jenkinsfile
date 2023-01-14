@@ -6,6 +6,12 @@ def COLOR_MAP = [
 pipeline {
     agent any
 
+    environment {
+        registryCredential = 'ecr:us-east-1:aws-creds'
+        appRegistry = "897003471175.dkr.ecr.us-east-1.amazonaws.com/vprofileimg"
+        vprofileRegistry = "https://897003471175.dkr.ecr.us-east-1.amazonaws.com"
+    }
+
     tools {
         maven "MAVEN3"
         jdk "OpenJDK8"
@@ -126,6 +132,14 @@ pipeline {
                     protocol: 'http', 
                     repository: 'new-repo-release', 
                     version: "${version}"
+                }
+            }
+        }
+        
+        stage('Build App Image') {
+            steps {
+                script {
+                    dockerImage = docker.build(appRegistry + ":$BUILD_NUMBER", ".")
                 }
             }
         }

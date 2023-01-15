@@ -143,6 +143,17 @@ pipeline {
                 }
             }
         }
+
+        stage('Upload app image') {
+            steps {
+                script {
+                    docker.withRegistry( vprofileRegistry, registryCredential ) {
+                        dockerImage.push("$BUILD_NUMBER")    
+                        dockerImage.push("latest")   
+                    }
+                }
+            }
+        }
         
     }
 

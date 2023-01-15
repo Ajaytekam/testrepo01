@@ -8,8 +8,8 @@ pipeline {
 
     environment {
         registryCredential = 'ecr:us-east-1:aws-creds'
-        appRegistry = "897003471175.dkr.ecr.us-east-1.amazonaws.com/vprofileimg"
-        vprofileRegistry = "https://897003471175.dkr.ecr.us-east-1.amazonaws.com"
+        appRegistry = "897003471175.dkr.ecr.us-east-1.amazonaws.com/vprofileappimg"   
+        vprofileRegistry = "https://897003471175.dkr.ecr.us-east-1.amazonaws.com/vprofileappimg"   
     }
 
     tools {

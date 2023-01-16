@@ -26,7 +26,7 @@
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                <li><a href="#technologies">TECHNOLOGIES</a></li>
+                                <li><a href="#technologies">TECHNOLOGIES This is Fucked Up new Version Motherfucker</a></li>
                                 <li><a href="#about">ABOUT</a></li>
                                 <li><a href="#contact">CONTACT</a></li>
                                 <li><a href="#">BLOG</a></li>
